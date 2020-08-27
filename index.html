@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inicio</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="js/index.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="">
+            <img src="" style="height: 50px;">
+            <i class="fab fa-battle-net"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+            <ul id="liConfig" class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#inicio" onclick="location.href = 'index.html'">Inicio<span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" id="navbarUser">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" onclick="changePassword()" href="#">Cambiar contraseña</a>
+                        <a class="dropdown-item" onclick="userLogOut()" href="#">Cerrar sesion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container pt-4">
+        <form class="form-signin mx-auto pt-4" style="max-width: 305px">
+            <div class="text-center p-4">
+                <h2>Inicio</h2>
+            </div>
+        </form>
+
+        <div id="apiMindicator" class="container text-center p-4">
+            <div class="text-center">
+                <p class="lead">Divisa Dolar</p>
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-responsive-md col-lg-10 col-md-12 mx-auto">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Codigo</th>
+                            <th style="text-align: center;">Fecha</th>
+                            <th style="text-align: center;">Nombre</th>
+                            <th style="text-align: center;">Moneda</th>
+                            <th style="text-align: center;">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="divisaDolar">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="container text-center p-4">
+            <div class="text-center">
+                <p class="lead">Buscar divisa</p>
+            </div>
+            <div id="divBuscarDivisa" class="row">
+                <div class="input-group mb-3 col-lg-10 col-md-12 mx-auto">
+                    <input id="inputDivisa" type="text" class="form-control" placeholder="Ingrese una divisa"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="buscarDivisa()">Buscar</button>
+                    </div>
+                </div>
+                <table id="tablaBuscarDivisa"
+                    class="table table-bordered table-responsive-md col-lg-10 col-md-12 mx-auto">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Codigo</th>
+                            <th style="text-align: center;">Fecha</th>
+                            <th style="text-align: center;">Nombre</th>
+                            <th style="text-align: center;">Moneda</th>
+                            <th style="text-align: center;">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="trBuscarDivisa">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="apiRandomUser" class="container text-center p-4">
+            <div class="text-center">
+                <p class="lead">Random User</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-auto">
+                    <div class="our-team">
+                        <div id="userImage" class="picture">
+
+                        </div>
+                        <div id="userData" class="team-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="text-center">
+                <p class="lead">Buscar en MercadoLibre</p>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3 col-lg-10 col-md-12 mx-auto">
+                    <input id="inputMercadoLibre" type="text" class="form-control" placeholder="Ingrese su busqueda"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="apiMercadoLibre()">Buscar</button>
+                    </div>
+                </div>
+                <div class="row" id="resultadosMercadoLibre" >
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <footer class="text-muted">
+            <div class="container">
+                <div class="float-left text-left pt-4">
+                    <p>Este sitio forma parte de Taller de Tecnologías 2020</p>
+                    <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

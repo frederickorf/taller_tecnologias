@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Configuracion</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+    <script src="js/modify.js"></script>
+
+
+</head>
+
+<body onload="checkUserLoggedIn()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="">
+            <img src="" style="height: 50px;">
+            <i class="fab fa-battle-net"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#inicio" onclick="location.href = 'index.html'">Inicio<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#config" onclick="location.href = 'config.html'">Configuracion</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" id="navbarUser">
+                <li class="nav-item">
+                        <a class="nav-link" href="#" id="navbarDropdownUser" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+    <div class="container pt-4">
+        <form class="form-signin mx-auto pt-4" style="max-width: 305px">
+            <div class="text-center p-4">
+                <h2>Configuracion</h2>
+                <p class="lead">Cambiar contraseña.</p>
+            </div>
+            <label">Contraseña anterior</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input type="text" id="inputCurrentPassword" class="form-control" placeholder="" required=""
+                    autofocus="">
+            </div>
+
+            <label class="pt-3">Nueva contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input type="password" id="inputNewPassword" class="form-control" placeholder="" required="">
+            </div>
+
+            <label class="pt-3">Confirmar contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-key"></i>
+                </span>
+                <input type="password" id="inputConfirmNewPassword" class="form-control" placeholder="" required="">
+            </div>
+            <div class="mb-3 pt-3">
+                <label id="lblMsg"></label>
+            </div>
+            <div class="btn-group  col-lg-12">
+                <button class="btn btn-primary" type="button" onclick="changePassword()">Confirmar</button>
+                <button class="btn btn-light btn-outline-secondary" type="button"
+                    onclick="atras()">Atras</button>
+            </div>
+        </form>
+
+        <footer class="text-muted">
+            <div class="container">
+                <div class="float-left text-left pt-4">
+                    <p>Este sitio forma parte de Taller de Tecnologías 2020</p>
+                    <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
