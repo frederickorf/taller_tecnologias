@@ -3,7 +3,6 @@
 // Funcion que se ejecuta al finalizar la carga del html.
 
 $(document).ready(function () {
-
     checkUserLoggedIn();
     apiMindicator("dolar", "#divisaDolar");
     $('#tablaBuscarDivisa').hide();
