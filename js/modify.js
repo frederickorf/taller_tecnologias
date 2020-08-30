@@ -118,5 +118,5 @@ function clearFields() {
 
 function atras() {
     clearFields();
-    window.location.replace("index.html");
+    history.back();
 }

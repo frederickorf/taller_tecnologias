@@ -6,7 +6,6 @@ $(document).ready(function () {
     checkUserLoggedIn();
     apiMindicator("dolar", "#divisaDolar");
     $('#tablaBuscarDivisa').hide();
-    /* apiMindicator("dolar", "#trBuscarDivisa"); */
     apiRandomUser();
 });
 
@@ -20,13 +19,6 @@ function checkUserLoggedIn() {
     var user = getUserLoggedIn();
     if ((user != null) && (userExistence(user))) {
         $('#navbarDropdownUser').text(user);
-        if (user == "admin") {
-            $("#liConfig").append(
-                '<li  class="nav-item">' +
-                '<a class="nav-link" href="#config" onclick="location.href = ' + 'config.html' + '">Configuracion</a>' +
-                '</li>'
-            );
-        }
     }
     else {
         window.location.replace("login.html");
@@ -37,7 +29,12 @@ function checkUserLoggedIn() {
 // Retorna true si el usuario pasado como parametro esta registrado.
 
 function userExistence(userLogin) {
-    var user = JSON.parse(localStorage.getItem(userLogin));
+    var user = null;
+    user = JSON.parse(localStorage.getItem(userLogin));
+
+    if (user == null)
+        user = JSON.parse(sessionStorage.getItem(userLogin));
+
     if (user.usuario == userLogin)
         return true;
 }
@@ -61,6 +58,9 @@ function userLogOut() {
     sessionStorage.removeItem('userLoggedIn');
     window.location.replace("login.html");
 }
+
+
+// Redirige a la seccion de cambio de contraseña
 
 function changePassword() {
     window.location.replace("modify.html");
@@ -110,10 +110,10 @@ function apiRandomUser() {
 
         if (this.readyState == 4 && this.status == 200) {
             var datos = JSON.parse(this.responseText)
-
+            console.log(datos);
             $("#userImage").html("");
             $("#userImage").append(
-                '<img class="img-fluid" src="' + datos.results[0].picture.medium + '"></img>'
+                '<img class="img-fluid" alt="' + datos.results[0].gender + '" src="' + datos.results[0].picture.medium + '"></img>'
             )
 
             $("#userData").html("");
@@ -152,34 +152,20 @@ function apiMercadoLibre() {
                 var datos = JSON.parse(this.responseText)
                 console.log(datos);
                 $("#resultadosMercadoLibre").html("");
-                $("#resultadosMercadoLibre").append(
-                    '<div class="col-md-4">' +
-                    '<a href="categories.html" class="card mb-4 shadow-sm custom-card">' +
-                    '<img class="bd-placeholder-img card-img-top" src=' + datos.results[0].thumbnail + '>' +
-                    '<h3 class="m-3">' + datos.results[0].price + ' (' + datos.results[0].currency_id + ')' + '</h3>' +
-                    '<div class="card-body">' +
-                    '<p class="card-text">' + datos.results[0].title + '</p>' +
-                    '</div>' +
-                    '</a>' +
-                    '</div>' +
-                    '<div class="col-md-4">' +
-                    '<a href="categories.html" class="card mb-4 shadow-sm custom-card">' +
-                    '<img class="bd-placeholder-img card-img-top" src=' + datos.results[1].thumbnail + '>' +
-                    '<h3 class="m-3">' + datos.results[1].price + ' (' + datos.results[1].currency_id + ')' + '</h3>' +
-                    '<div class="card-body">' +
-                    '<p class="card-text">' + datos.results[1].title + '</p>' +
-                    '</div>' +
-                    '</a>' +
-                    '</div>' + '<div class="col-md-4">' +
-                    '<a href="categories.html" class="card mb-4 shadow-sm custom-card">' +
-                    '<img class="bd-placeholder-img card-img-top" src=' + datos.results[2].thumbnail + '>' +
-                    '<h3 class="m-3">' + datos.results[2].price + ' (' + datos.results[2].currency_id + ')' + '</h3>' +
-                    '<div class="card-body">' +
-                    '<p class="card-text">' + datos.results[2].title + '</p>' +
-                    '</div>' +
-                    '</a>' +
-                    '</div>'
-                )
+
+                for (var i = 0; i < 3; i++) {
+                    $("#resultadosMercadoLibre").append(
+                        '<div class="col-md-4">' +
+                        '<a href="categories.html" class="card mb-4 shadow-sm custom-card">' +
+                        '<img class="bd-placeholder-img card-img-top" src=' + datos.results[i].thumbnail + '>' +
+                        '<h3 class="m-3">' + datos.results[i].price + ' (' + datos.results[i].currency_id + ')' + '</h3>' +
+                        '<div class="card-body">' +
+                        '<p class="card-text">' + datos.results[i].title + '</p>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>'
+                    )
+                }
             }
         }
         http.send();
